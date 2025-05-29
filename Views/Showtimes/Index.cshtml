@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CineCheck.Models.Showtime>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Showtimes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Movie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Cinema)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.StartTime.ToString("g")
+                </td>
+                <td>
+                    @item.Movie?.Title ?? "N/A"
+                </td>
+                <td>
+                    @item.Cinema?.Name ?? "N/A"
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
