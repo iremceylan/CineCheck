@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CineCheck")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d20f1326d938d3f02872ba93fba0c5673e3ad382")]
 [assembly: System.Reflection.AssemblyProductAttribute("CineCheck")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CineCheck")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

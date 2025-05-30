@@ -25,12 +25,6 @@ namespace CineCheck.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = _userManager.GetUserId(User);
-            if (string.IsNullOrEmpty(userId))
-            {
-                // Not logged in, redirect to login page
-                return RedirectToAction("Login", "Account");
-            }
-
             var bookings = await _context.Bookings
                 .Include(b => b.Movie)
                 .Include(b => b.Cinema)
@@ -71,12 +65,12 @@ namespace CineCheck.Controllers
         // POST: Bookings/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> Create([Bind("MovieId,CinemaId,ShowtimeId,NumberOfTickets")] Booking booking)
         {
             var userId = _userManager.GetUserId(User);
-            Console.WriteLine($"DEBUG - Inside Create: UserId: {userId}");
-
-            if (string.IsNullOrEmpty(userId))
+            Console.WriteLine($"DEBUG: Logged-in user ID: {userId}");
+            if (userId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -85,19 +79,18 @@ namespace CineCheck.Controllers
 
             if (ModelState.IsValid)
             {
-                Console.WriteLine("DEBUG - ModelState is valid, adding booking...");
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
-                Console.WriteLine("DEBUG - Booking saved!");
                 return RedirectToAction(nameof(Index));
             }
 
-            Console.WriteLine("DEBUG - ModelState invalid!");
             ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "Name", booking.CinemaId);
             ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Title", booking.MovieId);
             ViewData["ShowtimeId"] = new SelectList(_context.Showtimes, "Id", "StartTime", booking.ShowtimeId);
             return View(booking);
         }
+
+
 
 
         // GET: Bookings/Edit/5

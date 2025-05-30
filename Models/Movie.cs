@@ -25,7 +25,15 @@ namespace CineCheck.Models
 
         public string? Description { get; set; }
 
+        public string? Director { get; set; }
+
+        public string? Actors { get; set; }
+
         public ICollection<Showtime>? Showtimes { get; set; }
+
+        public ICollection<Rating>? Ratings { get; set; }
+
+        
     }
 }
 
