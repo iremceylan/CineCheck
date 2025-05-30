@@ -1,0 +1,23 @@
+# CineCheck 🎬
+
+CineCheck is a web application built with ASP.NET Core MVC that allows users to browse movies, rate them, and manage bookings.
+
+## Features
+- Movie listings with details
+- Ratings system
+- User authentication
+- Bootstrap styling
+
+## Technologies Used
+- ASP.NET Core MVC
+- Entity Framework Core
+- SQL Server
+
+## How to Run
+1. Clone the repository
+2. Open in Visual Studio
+3. Run `Update-Database` in the Package Manager Console (if migrations are included)
+4. Press F5 to run the project
+
+## Notes
+- Sample database is included in the SQL file (optional)
